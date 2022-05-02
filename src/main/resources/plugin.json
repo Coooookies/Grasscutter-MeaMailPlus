@@ -1,0 +1,10 @@
+{
+  "name": "MeaMailPlus",
+  "description": "A plugin to send some notices to players",
+  "version": "1.0",
+  "mainClass": "io.github.gmw.MeaMailPlusCore",
+  "authors": [
+    "Hell",
+    "ButterCookies"
+  ]
+}
