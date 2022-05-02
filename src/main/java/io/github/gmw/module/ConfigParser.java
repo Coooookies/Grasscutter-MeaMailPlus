@@ -79,10 +79,10 @@ public class ConfigParser {
         template_initialMail.sender= "MeaKiritaniIwako";
         template_initialMail.importance = 1;
         template_initialMail.body.content =
-                "Hi!\n\n" +
+                "Hi!\r\n" +
                 "Thank you for using MeaMailPlus! You can use MeaMailPlus to send mail to your friends more conveniently.\r\n\r\n" +
                 "Github HomePage" +
-                "<type=\"browser\" text=\"Github\" href=\"https://discord.gg/T5vZU6UyeG\"/>\r\n" +
+                "<type=\"browser\" text=\"Github\" href=\"https://github.com/Coooookies/Grasscutter-MeaMailPlus\"/>\r\n" +
                 "Grasscutter Discord" +
                 "<type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>";
         template_initialMail.body.items = new MeaMailTemplate.MailBody.ItemInfo[]{
@@ -108,12 +108,12 @@ public class ConfigParser {
                 "<type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>";
 
         template_birthDayMail.templateId = 1004;
-        template_birthDayMail.remainTime = 2592000; // 1 month
+        template_birthDayMail.remainTime = 31536000; // 1 year
         template_birthDayMail.title = "Best Wishes on Your Birthday";
         template_birthDayMail.sender = "Mailing System";
         template_birthDayMail.importance = 1;
         template_birthDayMail.body.content =
-                "Happy Birthday,Traveler! Please find your gift attached to this message.\r\n" +
+                "Happy Birthday, Traveler! Please find your gift attached to this message.\r\n" +
                 "Thank you for all your support. We wish you a wonderful day, wherever in this world you may roam.";
         template_birthDayMail.body.items = new MeaMailTemplate.MailBody.ItemInfo[]{
                 new MeaMailTemplate.MailBody.ItemInfo(118003, 1)
