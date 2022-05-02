@@ -7,12 +7,12 @@ English | 简体中文 (正在写)
 ## 💡Feature
 
 - [x] **Birthday Mail**  - Send birthday emails to players on their birthdays.
-- [X] **Daily Bonus**  Players will receive rewards when they join the server.
-- [X] **Newbie Gift Mail**  Players will receive rewards when they first joined.
-- [X] **Scheduled Mail push**  You can limit the level threshold of players to receive the mail.
-- [X] **Command support**  Support sending Mails by command.
-- [ ] **RESTful API**  Send Mail via third-party API.
-- [ ] **MORE**  Comming soon...
+- [X] **Daily Bonus**  - Players will receive rewards when they join the server.
+- [X] **Newbie Gift Mail**  - Players will receive rewards when they first joined.
+- [X] **Scheduled Mail push**  - You can limit the level threshold of players to receive the mail.
+- [X] **Command support**  - Support sending Mails by command.
+- [ ] **RESTful API**  - Send Mail via third-party API.
+- [ ] **MORE**  - Comming soon...
 
 ## 🍗Setup
 ### Install
