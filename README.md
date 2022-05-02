@@ -16,7 +16,7 @@ English | 简体中文 (正在写)
 
 ## 🍗Setup
 ### Install
-1. [Download Plugin Jar](https://github.com/Coooookies/MeaNotice/releases).
+1. [Download Plugin Jar](https://github.com/Coooookies/Grasscutter-MeaMailPlus/releases)
 2. Put plugins into `plugins` folder of your grasscutter server.
 3. Start your server, then the plugin will create `MeaMailPlus` folder in your server plugin folder.
 ```
