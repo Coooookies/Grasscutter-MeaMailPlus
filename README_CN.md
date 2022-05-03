@@ -32,9 +32,11 @@ Root
         └───config.json    // 插件配置
 ```
 ### 游戏内乱码了！
-将配置文件和Template模板文件
-转换成gb2312编码，主流编辑器（包括记事本）都可以转换。
+如果你是Linux：
+- 将配置文件和Template模板文件转换成utf8编码
 
+如果你是Windows：
+- 将配置文件和Template模板文件转换成ansi(gb2312)编码
 ### 怎么用？
 
 在插件目录中的`MeaMailPlus`目录下, 包含 `template` 文件夹和 `config.json` 配置文件
