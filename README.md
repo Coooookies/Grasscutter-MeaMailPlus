@@ -117,7 +117,7 @@ TemplateExample.json
   "remainTime": 2592000
   // time in second
   // 2592000 is the seconds of 30 days: 
-  // 2592000 = (d) * 24(h) * 60(m) * 60(s)
+  // 2592000 = 30(d) * 24(h) * 60(m) * 60(s)
   // if you are not sure, you can use two 10 digits timestamp subtraction:
   // 2592000 = 1651568400 (2022-5-3 9:00:00GMT) - 1648976400 (2022-4-3 9:00:00GMT)
 }
@@ -132,16 +132,13 @@ TemplateExample.json
     // you can use the variable: 
     // `{playerName}`: (Testing) player name
     // `\r\n`: line feed
-    // you can use link to open Webview in-game & Browser:
+    // you can use link to open Browser & Webview in-game:
+    // <type=\"browser\" text=\"title\" href=\"You website link\"/>
+    // for example:
     // `<type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: open a Browser, tag name is "Discord".
-    // `<type=\"webview\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: open a Browser, tag name is "Discord".
+    // `<type=\"webview\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: open a in-game Browser, tag name is "Discord".
     
     "items": [                     // items in the mail, if you set `[]`, no item will be sent
-      {
-        "id": 223,
-        "count": 1,
-        "level": 1
-      }
       {
         "id": 223,                 // item id
         "count": 1,                // amount
@@ -163,6 +160,10 @@ TemplateExample.json
 ```
 
 Hyperlinks in the mail content:
+```
+<type=\"browser\" text=\"title\" href=\"You website link\"/>
+```
+for example:
 ```
 <type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>
 <type=\"webview\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>

@@ -41,12 +41,12 @@ Root
 ```
 {
   "updateTime": [4, 0, 0],         // 设置服务器的邮件推送时间，这里设置的是 04:00:00 (24小时时间制)
-  "initialMail": [ 1001 ],         // 设置新玩家第一次进服时接收的邮件TemplateId，可以设置很多个，例如： [1001, 1002, 1003]
-  "birthDayMail": [ 1004 ],        // 设置玩家生日邮件TemplateId，当然也可以设置很多个（如果玩家有点贪）
+  "initialMail": [ 1001 ],         // 设置新玩家第一次进服时接收的邮件模板ID，可以设置很多个，例如： [1001, 1002, 1003]
+  "birthDayMail": [ 1004 ],        // 设置玩家生日邮件模板ID，当然也可以设置很多个（如果玩家有点贪）
   
   "dailySignInMail": [             // 玩家每日登录的邮件，会在每天推送时间或者是玩家上线时发送，一天只能领取一次，不上线就没有。
     {
-      "templateId": 1002,          // 邮件的TemplateId
+      "templateId": 1002,          // 邮件模板ID
       "minLevel": 0                // 设置冒险等级限制，0表示不限制，小于这个冒险等级的玩家不会收到邮件
     },
     {
@@ -63,7 +63,7 @@ Root
     {
       "onlineOnly": false,         // 是否只有在线玩家能接收邮件，如果设置成离线，则所有玩家都能接收到
       "triggerTime": [12, 0, 0],   // 触发时间 这里是 12:00:00
-      "templateId": 1003,          // 邮件templateId
+      "templateId": 1003,          // 邮件模板ID
       "minLevel": 0                // 设置冒险等级限制，0表示不限制，小于这个冒险等级的玩家不会收到邮件
     },
     {                              // 设置多个邮件...
@@ -82,12 +82,12 @@ Root
 }
 ```
 #### Template 模板文件
-你可以自行创建模板文件放进 `template` 文件夹, 同样只支持 `JSON`文件.
+你可以自行创建多个模板文件放进 `template` 文件夹，命名随意, 同样只支持 `JSON`文件.
 举个栗子:
 TemplateExample.json
 ```
 {
-  "templateId": 1001,              // 你的邮件TemplateID，不能重复。
+  "templateId": 1001,              // 你的邮件模板ID，不能重复。
   "title": "Mail title",           // 邮件标题
   "sender": "KiritaniIwako",       // 邮件发送人，你可以设置为 "Server"
   "expireTime": 0,                 // 过期时间，稍后会详细介绍
@@ -110,50 +110,46 @@ TemplateExample.json
 ```
 {
   "expireTime": 1651571451,
-  // use 10 digits timestamp, like this: 
-  // you can use convert tool to convert the timestamp to 10 digits timestamp, 
+  // 使用十位时间戳来定义到期时间
+  // 你可以使用下面的转换工具来将时间转换为时间戳（记得选择时间单位为秒）
   // https://tool.lu/timestamp/
   
   "remainTime": 2592000
-  // time in second
-  // 2592000 is the seconds of 30 days: 
-  // 2592000 = (d) * 24(h) * 60(m) * 60(s)
-  // if you are not sure, you can use two 10 digits timestamp subtraction:
+  // 剩余时间（秒）
+  // 2592000 秒 = 30 天，计算方法：: 
+  // 2592000 = 30(天) * 24(小时) * 60(分钟) * 60(秒)
+  // 如果你不确定的话，也可以将两个时间转换成时间戳后相减，得到时间间隔：
   // 2592000 = 1651568400 (2022-5-3 9:00:00GMT) - 1648976400 (2022-4-3 9:00:00GMT)
 }
 ```
 
-2. How to set the mail `body/content`?
+2. 如何设置邮件的内容 `body/content`?
 ```
 {
   "body": {
     "content": "Mail content",
-    // you can set the content of the mail, 
-    // you can use the variable: 
-    // `{playerName}`: (Testing) player name
-    // `\r\n`: line feed
-    // you can use link to open Webview in-game & Browser:
-    // `<type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: open a Browser, tag name is "Discord".
-    // `<type=\"webview\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: open a Browser, tag name is "Discord".
+    // 你可以设置邮件的内容，支持变量：, 
+    // `{playerName}`: (未上线) 玩家名称
+    // `\r\n`: 换行符
+    // 你甚至可以创建超链接，有两种打开方式：`browser`对应的是打开系统浏览器，`webview`对应的是打开游戏自带的浏览器:
+    // <type=\"browser\" text=\"标题\" href=\"你的链接地址"/>
+    // 比如：
+    // `<type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: 打开一个系统浏览器，标签的名字叫 "Discord".
+    // `<type=\"webview\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>`: 打开一个游戏自带的浏览器，标签的名字叫 "Discord".
     
-    "items": [                     // items in the mail, if you set `[]`, no item will be sent
+    "items": [                     // 邮件附带的物品，如果设置为`[]`则不会附带物品
       {
-        "id": 223,
-        "count": 1,
-        "level": 1
-      }
-      {
-        "id": 223,                 // item id
-        "count": 1,                // amount
-        "level": 1                 // item level(1-90?)
+        "id": 223,                 // 物品id
+        "count": 1,                // 数量
+        "level": 1                 // 等级(1-90?)
       },
       {
-        "id": 224,                 // Multiple items...
+        "id": 224,                 // 多个物品...
         "count": 1,
         "level": 1
       },
       {
-        "id": 202,                 // Multiple items...
+        "id": 202,                 // 多个物品...
         "count": 10000000,
         "level": 1
       }
@@ -162,7 +158,11 @@ TemplateExample.json
 }
 ```
 
-Hyperlinks in the mail content:
+在邮件内容里设置超链接:
+```
+<type=\"browser\" text=\"标题\" href=\"你的链接地址"/>
+```
+比如：
 ```
 <type=\"browser\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>
 <type=\"webview\" text=\"Discord\" href=\"https://discord.gg/T5vZU6UyeG\"/>
