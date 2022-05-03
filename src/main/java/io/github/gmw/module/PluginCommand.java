@@ -73,11 +73,17 @@ public class PluginCommand implements CommandHandler {
 
                         int uid = Integer.parseInt(args.get(2));
                         CommandHandler.sendMessage(sender, "Mail Sending...");
-                        Grasscutter.getGameServer().getPlayers().forEach((index, player) -> {
-                            if (player.getUid() == uid) {
-                                MailCore.sendMailToPlayer(player, template);
-                            }
-                        });
+                        MailCore.sendMailToPlayer(uid, template, false);
+                    }
+                    case "sendonline" -> {
+                        if (template == null) {
+                            CommandHandler.sendMessage(sender, "Invalid template id.");
+                            return;
+                        }
+
+                        int uid = Integer.parseInt(args.get(2));
+                        CommandHandler.sendMessage(sender, "Mail Sending...");
+                        MailCore.sendMailToPlayer(uid, template, true);
                     }
                     case "sendall" -> {
                         if (template == null) {

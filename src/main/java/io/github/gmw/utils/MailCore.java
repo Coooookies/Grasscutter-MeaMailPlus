@@ -12,11 +12,42 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 
 public final class MailCore {
+    public static void saveMailToDatabase(Player player, MeaMailTemplate template) {
+        saveMailToDatabase(player, template, 0);
+    }
+
+    public static void saveMailToDatabase(Player player, MeaMailTemplate template, int minLevel) {
+        if (player.getLevel() < minLevel) return;
+
+        Mail mail = templateToMail(template);
+        mail.setOwnerUid(player.getUid());
+        DatabaseHelper.saveMail(mail);
+        MeaMailPlusCore.getInstance().logger("Mail sent to " + player.getUid() + "(Offline): " + template.title);
+    }
+
+    public static void sendMailToPlayer(int uid, MeaMailTemplate template, boolean onlineOnly) {
+        AtomicBoolean mailSent = new AtomicBoolean(false);
+        Grasscutter.getGameServer().getPlayers().forEach((index, player) -> {
+            if (player.getUid() == uid) {
+                mailSent.set(true);
+                sendMailToPlayer(player, template);
+            }
+        });
+
+        if(!onlineOnly && !mailSent.get()) {
+            DatabaseHelper.getAllPlayers().forEach(player -> {
+                if (player.getUid() == uid) {
+                    saveMailToDatabase(player, template);
+                }
+            });
+        }
+    }
+
     public static void sendMailToPlayer(Player player, MeaMailTemplate template) {
         sendMailToPlayer(player, template, 0);
     }
@@ -112,7 +143,7 @@ public final class MailCore {
 
         // two methods to send mail
         onlinePlayers.forEach(player -> sendMailToPlayer(player, template, minLevel));
-        offlinePlayers.forEach(player -> sendMailToPlayer(player, template, minLevel));
+        offlinePlayers.forEach(player -> saveMailToDatabase(player, template, minLevel));
     }
 
     public static void sendDailySignInMailToPlayer(int uid) {
