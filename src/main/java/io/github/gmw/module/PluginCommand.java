@@ -48,6 +48,15 @@ public class PluginCommand implements CommandHandler {
                         MailCore.sendMailToAllPlayers(template);
                         CommandHandler.sendMessage(sender, "Mail Sended!");
                     }
+                    case "sendallonline" -> {
+                        if (template == null) {
+                            CommandHandler.sendMessage(sender, "Invalid template id.");
+                            return;
+                        }
+
+                        MailCore.sendMailToAllPlayers(template, 0, true);
+                        CommandHandler.sendMessage(sender, "Mail Sended!");
+                    }
                     default -> CommandHandler.sendMessage(sender, "Invalid args.");
                 }
             }
@@ -100,8 +109,8 @@ public class PluginCommand implements CommandHandler {
         String[] helpMap = new String[]{
                 "Send Mail:",
                 "    /meamail send <templateId> <uid>",
-                "    /meamail sendall <templateId> <minLevel>",
-                "    /meamail sendallonline <templateId> <minLevel>",
+                "    /meamail sendall <templateId> [minLevel]",
+                "    /meamail sendallonline <templateId> [minLevel]",
 //                "    /meamail welcomemail <uid>",
 //                "    /meamail dailymail <uid>",
 //                "    /meamail initialmail <uid>",
