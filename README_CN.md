@@ -18,7 +18,7 @@ MeaMailPlus 是一个 [Grasscutter](https://github.com/Grasscutters/Grasscutter)
 ### 安装
 1. [下载插件](https://github.com/Coooookies/Grasscutter-MeaMailPlus/releases)
 2. 把插件放进你的Grasscutter服务器的 `plugins` 文件夹。
-3. 启动服务器，插件会自动在你的服务器文件夹下生成 `MeaMailPlus` 文件夹。
+3. 启动服务器，插件会自动在你的服务器插件文件夹下生成 `MeaMailPlus` 文件夹。
 ```
 Root
 │   lib
