@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import emu.grasscutter.Grasscutter;
 import io.github.gmw.MeaMailPlusCore;
 import io.github.gmw.config.MeaMailConfig;
 import io.github.gmw.config.MeaMailTemplate;
@@ -16,7 +17,7 @@ import io.github.gmw.config.MeaMailTemplate;
 public class ConfigParser {
     private MeaMailConfig config;
     private ArrayList<MeaMailTemplate> templates;
-    private final String configPath = "./plugins/MeaMailPlus";
+    private final String configPath = Grasscutter.getConfig().PLUGINS_FOLDER + "MeaMailPlus";
     private final String templatePath = this.configPath + "/template";
     private final File configFile = new File( this.configPath + "/config.json");
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
