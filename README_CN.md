@@ -2,7 +2,7 @@
 # MeaMailPlus - Grasscutter 邮件增强
 MeaMailPlus 是一个 [Grasscutter](https://github.com/Grasscutters/Grasscutter) 插件, 你可以用它来轻松的收发邮件.
 
-[English](https://github.com/Scirese/Grasscutter-MeaMailPlus/blob/main/README.md) | 简体中文
+[English](./README.md) | 简体中文
 
 ## 💡Feature
 
