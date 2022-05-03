@@ -160,7 +160,7 @@ TemplateExample.json
 
 在邮件内容里设置超链接:
 ```
-<type=\"browser\" text=\"标题\" href=\"你的链接地址"/>
+<type=\"browser\" text=\"标题\" href=\"你的链接地址\"/>
 ```
 比如：
 ```
