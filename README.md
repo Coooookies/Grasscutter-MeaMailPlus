@@ -2,7 +2,7 @@
 # MeaMailPlus - Grasscutter Mail enhancements
 MeaMailPlus is a plugin of [Grasscutter](https://github.com/Grasscutters/Grasscutter), you can use this plugin to send your mail conveniently.
 
-English | 简体中文 (正在写)
+English | [简体中文](./README_CN.md)
 
 ## 💡Feature
 
@@ -41,8 +41,8 @@ Run command `/meamail reload` in console to reload the config.
 ```
 {
   "updateTime": [4, 0, 0],         // set the server's start time for send mail of the day, default is 04:00:00(24 hours system)
-  "initialMail": [ 1001 ],         // set the initial mail id, you can set multiple mail ids like [1001, 1002, 1003]
-  "birthDayMail": [ 1004 ],        // set the birthday mail id, you can set multiple mail too!
+  "initialMail": [ 1001 ],         // set the initial mail template id, you can set multiple mail ids like [1001, 1002, 1003]
+  "birthDayMail": [ 1004 ],        // set the birthday mail template id, you can set multiple mail too!
   
   "dailySignInMail": [             // players can only receive once a day, and will not send if they are not online.
     {
@@ -68,7 +68,7 @@ Run command `/meamail reload` in console to reload the config.
     },
     {                              // multiple mail...
       "onlineOnly": true,
-      "triggerTime": [6, 0, 0],    // 16:00:00
+      "triggerTime": [16, 0, 0],    // 16:00:00
       "templateId": 1003,
       "minLevel": 0
     },
@@ -83,11 +83,11 @@ Run command `/meamail reload` in console to reload the config.
 ```
 #### Template file
 You can make multiple template files in `template` folder, only supports `JSON`.
-like this: 
+like this:
 TemplateExample.json
 ```
 {
-  "templateId": 1001,              // Your template id         
+  "templateId": 1001,              // Your template id, can't be repeated         
   "title": "Mail title",           // Your Mail title
   "sender": "KiritaniIwako",       // Your sender name, you can set "Server"
   "expireTime": 0,                 // Your mail expire time, will be explained in detail later.
@@ -99,7 +99,7 @@ TemplateExample.json
       {
         "id": 223,                 // item id
         "count": 1,                // amount
-        "level": 1                 // item level(1-90?)
+        "level": 1                 // item level(0-90?)
       }
     ]
   }
