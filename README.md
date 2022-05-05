@@ -4,6 +4,9 @@ MeaMailPlus is a plugin of [Grasscutter](https://github.com/Grasscutters/Grasscu
 
 English | [简体中文](./README_CN.md)
 
+Grasscutter's command tools:
+[GrasscutterCommandGenerator](https://github.com/jie65535/GrasscutterCommandGenerator)
+
 ## 💡Feature
 
 - [x] **Birthday Mail**  - Send birthday emails to players on their birthdays.
