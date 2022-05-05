@@ -4,7 +4,7 @@ MeaMailPlus 是一个 [Grasscutter](https://github.com/Grasscutters/Grasscutter)
 
 [English](./README.md) | 简体中文
 
-Grasscutter 命令工具:
+推荐使用 Grasscutter 命令生成工具:
 [GrasscutterCommandGenerator](https://github.com/jie65535/GrasscutterCommandGenerator)
 
 ## 💡Feature
