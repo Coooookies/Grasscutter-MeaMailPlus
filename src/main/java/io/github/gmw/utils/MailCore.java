@@ -30,22 +30,14 @@ public final class MailCore {
         MeaMailPlusCore.getInstance().logger("Mail sent to " + player.getUid() + "(Offline): " + template.title);
     }
 
-    public static void sendMailToPlayer(int uid, MeaMailTemplate template, boolean onlineOnly) {
-        AtomicBoolean mailSent = new AtomicBoolean(false);
-        Grasscutter.getGameServer().getPlayers().forEach((index, player) -> {
-            if (player.getUid() == uid) {
-                mailSent.set(true);
-                sendMailToPlayer(player, template);
-            }
-        });
+    public static void sendMailToPlayer(int uid, MeaMailTemplate template) {
+        sendMailToPlayer(uid, template, false);
+    }
 
-        if(!onlineOnly && !mailSent.get()) {
-            DatabaseHelper.getAllPlayers().forEach(player -> {
-                if (player.getUid() == uid) {
-                    saveMailToDatabase(player, template);
-                }
-            });
-        }
+    public static void sendMailToPlayer(int uid, MeaMailTemplate template, boolean onlineOnly) {
+        Player player = Grasscutter.getGameServer().getPlayerByUid(uid, !onlineOnly);
+        if (player == null) return;
+        sendMailToPlayer(player, template);
     }
 
     public static void sendMailToPlayer(Player player, MeaMailTemplate template) {
@@ -67,8 +59,10 @@ public final class MailCore {
 
     public static void sendMailToPlayer(Player player, MeaMailTemplate template, int minLevel) {
         if (player.getLevel() >= minLevel) {
-            player.sendMail(templateToMail(template));
-            MeaMailPlusCore.getInstance().logger("Mail sent to " + player.getUid() + ": " + template.title);
+            if (player.isOnline()) {
+                player.sendMail(templateToMail(template));
+                MeaMailPlusCore.getInstance().logger("Mail sent to " + player.getUid() + ": " + template.title);
+            } else saveMailToDatabase(player, template);
         } else {
             MeaMailPlusCore.getInstance().logger("Player " + player.getUid() + " is not level " + minLevel + " and mail was not sent");
         }
@@ -147,10 +141,9 @@ public final class MailCore {
     }
 
     public static void sendDailySignInMailToPlayer(int uid) {
-        Grasscutter.getGameServer().getPlayers().forEach((index, player) -> {
-            if (player.getUid() == uid)
-                sendDailySignInMailToPlayer(player);
-        });
+        Player player = Grasscutter.getGameServer().getPlayerByUid(uid, false);
+        if (player == null) return;
+        sendDailySignInMailToPlayer(player);
     }
 
     public static void sendDailySignInMailToPlayer(Player player) {
@@ -161,10 +154,9 @@ public final class MailCore {
     }
 
     public static void sendBirthDayMailToPlayer(int uid) {
-        Grasscutter.getGameServer().getPlayers().forEach((index, player) -> {
-            if (player.getUid() == uid)
-                sendBirthDayMailToPlayer(player);
-        });
+        Player player = Grasscutter.getGameServer().getPlayerByUid(uid, false);
+        if (player == null) return;
+        sendBirthDayMailToPlayer(player);
     }
 
     public static void sendBirthDayMailToPlayer(Player player) {
@@ -175,10 +167,9 @@ public final class MailCore {
     }
 
     public static void sendInitialMailToPlayer(int uid) {
-        Grasscutter.getGameServer().getPlayers().forEach((index, player) -> {
-           if (player.getUid() == uid)
-               sendInitialMailToPlayer(player);
-        });
+        Player player = Grasscutter.getGameServer().getPlayerByUid(uid, false);
+        if (player == null) return;
+        sendInitialMailToPlayer(player);
     }
 
     public static void sendInitialMailToPlayer(Player player) {

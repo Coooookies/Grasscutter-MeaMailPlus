@@ -15,8 +15,9 @@ import java.util.*;
         description = "MeaMailPlusCore command", aliases = {"mmail"}, permission = "meo.mail")
 
 public class PluginCommand implements CommandHandler {
+
     @Override
-    public void execute(Player sender, List<String> args) {
+    public void execute(Player sender, Player targetPlayer, List<String> args) {
         switch (args.size()) {
             default -> // *No args*
                     showHelpList(sender);
@@ -117,9 +118,6 @@ public class PluginCommand implements CommandHandler {
                 "    /meamail send <templateId> <uid>",
                 "    /meamail sendall <templateId> [minLevel]",
                 "    /meamail sendallonline <templateId> [minLevel]",
-//                "    /meamail welcomemail <uid>",
-//                "    /meamail dailymail <uid>",
-//                "    /meamail initialmail <uid>",
                 "Other:",
                 "    /meamail reload",
                 "    /meamail help",
