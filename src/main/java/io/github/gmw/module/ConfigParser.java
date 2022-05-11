@@ -17,7 +17,7 @@ import io.github.gmw.config.MeaMailTemplate;
 public class ConfigParser {
     private MeaMailConfig config;
     private ArrayList<MeaMailTemplate> templates;
-    private final String configPath = Grasscutter.getConfig().PLUGINS_FOLDER + "MeaMailPlus";
+    private final String configPath = Grasscutter.getConfig().folderStructure.plugins + "MeaMailPlus";
     private final String templatePath = this.configPath + "/template";
     private final File configFile = new File( this.configPath + "/config.json");
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();

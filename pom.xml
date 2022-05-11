@@ -55,7 +55,7 @@
             <artifactId>Grasscutter-api</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../Grasscutter/grasscutter-1.0.3-dev.jar</systemPath>
+            <systemPath>${basedir}/../Grasscutter/grasscutter-1.1.1-dev.jar</systemPath>
         </dependency>
 
         <dependency>
