@@ -14,7 +14,7 @@ public class PlayerBornHook extends HandlerSetPlayerBornDataReq {
     @Override
     public void handle(GameSession session, byte[] header, byte[] payload) throws Exception {
         super.handle(session, header, payload);
-        int playerUid = session.getAccount().getPlayerUid();
+        int playerUid = session.getPlayer().getUid();
 
         // 第一次加入
         if(playerUid != 0) {
